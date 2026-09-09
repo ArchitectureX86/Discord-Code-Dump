@@ -7,11 +7,17 @@ client_id = "1546844285645627542"
 RPC = Presence(client_id)
 RPC.connect()
 
+target_program = "Peach Dungeon.exe"
+for p in psutil.process_iter(['name']):
+        if p.info['name'] == target_program:
+            print(target_program)
+            a_name = p.info['name']
+
 # Show as "Playing"
 RPC.update(
         state="Doin' cool stuff.",
         details="Making my own Rich Presence with pypresence!",
-        name="Custom presence!",
+        name=a_name,
     )
 
 # I haven't looked at this yet, grapped from "https://qwertyquerty.github.io/pypresence/html/info/quickstart.html".
