@@ -1,35 +1,27 @@
 from pypresence import Presence
 from pypresence.types import ActivityType, StatusDisplayType
 import time
+import datetime
 import psutil
 
+client_id = "1546844285645627542"
+RPC = Presence(client_id)
+RPC.connect()
+
 while True:
-    print("Getting CPU usage and setting 'cpu' variable to CPU usage")
-    cpu = psutil.cpu_percent(interval=None)
+    print("Getting cpu")
+    cpu = f"{psutil.cpu_percent(interval=None)}%"
+    print("Got cpu")
 
-    print("Printing 'cpu'")
-    print(f"{cpu}%")
-    cpu = f"Cpu = {cpu}%"
-
-    print("VRAM time.")
-    vmem = psutil.virtual_memory()
-
-    print("Printing 'vmem'")
-    print(f"{vmem.percent}%")
-    vmem = f"Ram = {vmem.percent}%"
-
-    client_id = "1546844285645627542"
-    RPC = Presence(client_id)
-    RPC.connect()
-
+    print("Getting ram")
+    mem = f"{psutil.virtual_memory().percent}%"
+    print("Got ram")
 # Show as "Playing"
     RPC.update(
-            state="Doin' cool stuff.",
-            details=cpu,
-            name=vmem,
-            # details=f"Cpu:{psutil.cpu_percent(interval=None)}%",
-            # name=f"Ram:{psutil.virtual_memory().percent}%",
+            state=".",
+            details=f"Cpu: {cpu} / Ram: {mem}",
+            name=".",
         )
-    print("des news")
+    print("des q-dos")
 
-    time.sleep(15)
+    time.sleep(5)
