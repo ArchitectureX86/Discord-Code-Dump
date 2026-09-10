@@ -26,4 +26,4 @@ async def on_message(message):
     if message.content.startswith('$cpu'):
         await message.channel.send(f'{psutil.cpu_percent(interval=None)}!')
 
-client.run('MTU0NzQzMjU5MTM4NzM5ODIwNg.G_ayvL.Vu3WNdeF0yHMVWioH9vL6gVDhtPLRi1iapnx7Y')
+client.run('token')
